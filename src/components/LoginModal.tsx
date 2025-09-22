@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, User, Users, Shield, Eye, EyeOff, Gamepad2, BookOpen, Settings } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface LoginModalProps {
 }
 
 const LoginModal = ({ isOpen, onClose, defaultRole, onLogin }: LoginModalProps) => {
+  const { t } = useLanguage();
   const [selectedRole, setSelectedRole] = useState(defaultRole);
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState({
@@ -21,24 +23,24 @@ const LoginModal = ({ isOpen, onClose, defaultRole, onLogin }: LoginModalProps) 
   const roles = [
     {
       id: 'student',
-      name: 'Student',
+      name: t('login.student'),
       icon: <Gamepad2 className="w-8 h-8" />,
       color: 'from-green-500 to-blue-500',
-      description: 'Access your learning adventures'
+      description: t('login.student.desc')
     },
     {
       id: 'teacher',
-      name: 'Teacher',
+      name: t('login.teacher'),
       icon: <BookOpen className="w-8 h-8" />,
       color: 'from-blue-500 to-purple-500',
-      description: 'Manage your classroom'
+      description: t('login.teacher.desc')
     },
     {
       id: 'admin',
-      name: 'Admin',
+      name: t('login.admin'),
       icon: <Settings className="w-8 h-8" />,
       color: 'from-purple-500 to-red-500',
-      description: 'System administration'
+      description: t('login.admin.desc')
     }
   ];
 
@@ -60,8 +62,8 @@ const LoginModal = ({ isOpen, onClose, defaultRole, onLogin }: LoginModalProps) 
         </button>
 
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-white mb-2">Welcome to SparkSTEM</h2>
-          <p className="text-gray-400">Choose your role and begin your journey</p>
+          <h2 className="text-3xl font-bold text-white mb-2">{t('login.title')}</h2>
+          <p className="text-gray-400">{t('login.subtitle')}</p>
         </div>
 
         {/* Role Selection */}
@@ -101,24 +103,24 @@ const LoginModal = ({ isOpen, onClose, defaultRole, onLogin }: LoginModalProps) 
           {selectedRole === 'student' && (
             <>
               <div>
-                <label className="block text-gray-300 text-sm font-semibold mb-2">Student ID</label>
+                <label className="block text-gray-300 text-sm font-semibold mb-2">{t('login.studentId')}</label>
                 <input
                   type="text"
                   value={credentials.studentId}
                   onChange={(e) => setCredentials({...credentials, studentId: e.target.value})}
                   className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-blue-400 focus:outline-none"
-                  placeholder="Enter your Student ID"
+                  placeholder={t('login.enterStudentId')}
                   required
                 />
               </div>
               <div>
-                <label className="block text-gray-300 text-sm font-semibold mb-2">School Code</label>
+                <label className="block text-gray-300 text-sm font-semibold mb-2">{t('login.schoolCode')}</label>
                 <input
                   type="text"
                   value={credentials.schoolCode}
                   onChange={(e) => setCredentials({...credentials, schoolCode: e.target.value})}
                   className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-blue-400 focus:outline-none"
-                  placeholder="Enter School Code"
+                  placeholder={t('login.enterSchoolCode')}
                   required
                 />
               </div>
@@ -128,24 +130,24 @@ const LoginModal = ({ isOpen, onClose, defaultRole, onLogin }: LoginModalProps) 
           {(selectedRole === 'teacher' || selectedRole === 'admin') && (
             <>
               <div>
-                <label className="block text-gray-300 text-sm font-semibold mb-2">Email</label>
+                <label className="block text-gray-300 text-sm font-semibold mb-2">{t('login.email')}</label>
                 <input
                   type="email"
                   value={credentials.email}
                   onChange={(e) => setCredentials({...credentials, email: e.target.value})}
                   className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-blue-400 focus:outline-none"
-                  placeholder="Enter your email"
+                  placeholder={t('login.enterEmail')}
                   required
                 />
               </div>
               <div className="relative">
-                <label className="block text-gray-300 text-sm font-semibold mb-2">Password</label>
+                <label className="block text-gray-300 text-sm font-semibold mb-2">{t('login.password')}</label>
                 <input
                   type={showPassword ? "text" : "password"}
                   value={credentials.password}
                   onChange={(e) => setCredentials({...credentials, password: e.target.value})}
                   className="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-white focus:border-blue-400 focus:outline-none pr-12"
-                  placeholder="Enter your password"
+                  placeholder={t('login.enterPassword')}
                   required
                 />
                 <button
@@ -163,13 +165,13 @@ const LoginModal = ({ isOpen, onClose, defaultRole, onLogin }: LoginModalProps) 
             type="submit"
             className="w-full py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold rounded-lg hover:scale-105 transition-transform duration-300"
           >
-            Enter {roles.find(r => r.id === selectedRole)?.name} Portal
+            {t('login.enterPortal')} {roles.find(r => r.id === selectedRole)?.name}
           </button>
         </form>
 
         <div className="mt-6 text-center">
           <p className="text-gray-400 text-sm">
-            Need help? Contact your school administrator
+            {t('login.needHelp')}
           </p>
         </div>
       </div>

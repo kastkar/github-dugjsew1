@@ -1,26 +1,29 @@
 import React from 'react';
 import { Trophy, Gift, Users, Star, Crown, Target, Gamepad2, Download } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const StudentFeatures = () => {
+  const { t } = useLanguage();
+  
   const features = [
     {
       icon: <Trophy className="w-12 h-12" />,
-      title: "Climb the Leaderboard!",
-      description: "Compete with friends and become the #1 STEM Champion in your school.",
+      title: t('student.feature1.title'),
+      description: t('student.feature1.desc'),
       color: "from-yellow-400 to-orange-500",
       bgColor: "from-yellow-500/20 to-orange-500/20"
     },
     {
       icon: <Gift className="w-12 h-12" />,
-      title: "Earn Epic Loot!",
-      description: "Unlock rare badges, certificates, and new skins for your robot mascot.",
+      title: t('student.feature2.title'),
+      description: t('student.feature2.desc'),
       color: "from-purple-400 to-pink-500",
       bgColor: "from-purple-500/20 to-pink-500/20"
     },
     {
       icon: <Users className="w-12 h-12" />,
-      title: "Form Your Guild!",
-      description: "Team up with classmates in a 'study guild' to defeat special 'Boss Challenges' (aka exams).",
+      title: t('student.feature3.title'),
+      description: t('student.feature3.desc'),
       color: "from-blue-400 to-cyan-500",
       bgColor: "from-blue-500/20 to-cyan-500/20"
     }
@@ -38,10 +41,10 @@ const StudentFeatures = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 mb-4">
-            Gear Up. Level Up!
+            {t('student.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Every quest completed, every lesson mastered brings epic rewards and recognition
+            {t('student.subtitle')}
           </p>
         </div>
 
@@ -81,9 +84,9 @@ const StudentFeatures = () => {
           <div className="text-center mb-8">
             <h3 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-3">
               <Crown className="w-8 h-8 text-yellow-400" />
-              Achievement Gallery
+              {t('student.achievements')}
             </h3>
-            <p className="text-gray-300">Collect rare achievements and show off your expertise</p>
+            <p className="text-gray-300">{t('student.achievementsDesc')}</p>
           </div>
 
           <div className="grid md:grid-cols-4 gap-6">
@@ -108,20 +111,20 @@ const StudentFeatures = () => {
             <div className="flex-1">
               <h3 className="text-3xl font-bold text-white mb-3 flex items-center gap-3">
                 <Download className="w-8 h-8 text-blue-400" />
-                Offline Learning Mode
+                {t('student.offline.title')}
               </h3>
               <p className="text-gray-300 text-lg">
-                Download video lectures and modules for offline learning. Perfect for areas with limited internet connectivity.
+                {t('student.offline.desc')}
               </p>
             </div>
             
             <div className="flex flex-col gap-3">
               <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:scale-105 transition-transform flex items-center gap-2">
                 <Download className="w-5 h-5" />
-                Download Modules
+                {t('student.download')}
               </button>
               <div className="text-center text-sm text-gray-400">
-                🔋 Works offline • 📱 Any device
+                🔋 {t('student.offlineFeatures')}
               </div>
             </div>
           </div>
@@ -131,10 +134,10 @@ const StudentFeatures = () => {
         <div className="text-center mt-16">
           <button className="group relative px-12 py-4 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 text-white font-bold text-xl rounded-full hover:scale-110 transition-all duration-300 animate-pulse">
             <Gamepad2 className="inline w-6 h-6 mr-3" />
-            Start Your Journey
+            {t('student.startJourney')}
             <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity animate-ping"></div>
           </button>
-          <p className="text-gray-400 mt-4">Join thousands of students already on their STEM adventure!</p>
+          <p className="text-gray-400 mt-4">{t('student.joinThousands')}</p>
         </div>
       </div>
     </section>

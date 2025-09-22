@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Users, Shield, Sparkles, Zap, BookOpen, Globe } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface HeroProps {
   onOpenLogin: (role: string) => void;
 }
 
 const Hero = ({ onOpenLogin }: HeroProps) => {
+  const { t } = useLanguage();
   const [portalOpen, setPortalOpen] = useState(false);
   const [floatingIcons, setFloatingIcons] = useState<Array<{id: number, x: number, y: number, icon: string}>>([]);
 
@@ -101,23 +103,22 @@ const Hero = ({ onOpenLogin }: HeroProps) => {
           {/* Main Headline with Animation */}
           <div className="mb-6">
             <h1 className="text-6xl md:text-8xl font-black text-white drop-shadow-2xl mb-4 animate-pulse">
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0s' }}>S</span>
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0.1s' }}>p</span>
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0.2s' }}>a</span>
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0.3s' }}>r</span>
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0.4s' }}>k</span>
-              <span className="inline-block animate-bounce mx-4" style={{ animationDelay: '0.5s' }}>⚡</span>
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0.6s' }}>S</span>
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0.7s' }}>T</span>
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0.8s' }}>E</span>
-              <span className="inline-block animate-bounce" style={{ animationDelay: '0.9s' }}>M</span>
+              {t('hero.title').split('').map((char, index) => (
+                <span 
+                  key={index}
+                  className="inline-block animate-bounce" 
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  {char === ' ' ? <span className="mx-4">⚡</span> : char}
+                </span>
+              ))}
             </h1>
           </div>
 
           {/* Sub-headlines */}
           <div className="mb-8 space-y-4">
             <h2 className="text-3xl md:text-5xl font-bold text-white animate-fade-in-up">
-              Start Studying and Playing Together!
+              {t('hero.subtitle')}
             </h2>
           </div>
 
@@ -128,7 +129,7 @@ const Hero = ({ onOpenLogin }: HeroProps) => {
               className="group relative px-12 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold text-xl rounded-full hover:scale-110 transition-all duration-300 animate-pulse shadow-2xl"
             >
               <Play className="inline w-6 h-6 mr-3" />
-              PLAY NOW
+              {t('hero.playNow')}
               <div className="absolute inset-0 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity animate-ping"></div>
             </button>
             
@@ -137,7 +138,7 @@ const Hero = ({ onOpenLogin }: HeroProps) => {
               className="group px-8 py-4 border-2 border-blue-400 text-blue-400 font-semibold text-lg rounded-full hover:bg-blue-400 hover:text-black transition-all duration-300"
             >
               <BookOpen className="inline w-5 h-5 mr-2" />
-              Teacher's Lounge
+              {t('hero.teacherLounge')}
             </button>
             
             <button 
@@ -145,7 +146,7 @@ const Hero = ({ onOpenLogin }: HeroProps) => {
               className="group px-8 py-4 border-2 border-purple-400 text-purple-400 font-semibold text-lg rounded-full hover:bg-purple-400 hover:text-black transition-all duration-300"
             >
               <Shield className="inline w-5 h-5 mr-2" />
-              Admin Portal
+              {t('hero.adminPortal')}
             </button>
           </div>
 
@@ -153,20 +154,20 @@ const Hero = ({ onOpenLogin }: HeroProps) => {
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             <div className="group p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105">
               <div className="text-4xl mb-4 group-hover:animate-spin">🌐</div>
-              <h3 className="text-xl font-bold text-white mb-2">100% Offline</h3>
-              <p className="text-gray-300">No internet? No problem! Play anywhere, anytime.</p>
+              <h3 className="text-xl font-bold text-white mb-2">{t('hero.feature1.title')}</h3>
+              <p className="text-gray-300">{t('hero.feature1.desc')}</p>
             </div>
             
             <div className="group p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105">
               <div className="text-4xl mb-4 group-hover:animate-bounce">🎯</div>
-              <h3 className="text-xl font-bold text-white mb-2">Interactive Learning</h3>
-              <p className="text-gray-300">Engaging content that makes learning fun and effective.</p>
+              <h3 className="text-xl font-bold text-white mb-2">{t('hero.feature2.title')}</h3>
+              <p className="text-gray-300">{t('hero.feature2.desc')}</p>
             </div>
             
             <div className="group p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105">
               <div className="text-4xl mb-4 group-hover:animate-pulse">🎮</div>
-              <h3 className="text-xl font-bold text-white mb-2">Epic Quests</h3>
-              <p className="text-gray-300">Turn boring lessons into thrilling adventures.</p>
+              <h3 className="text-xl font-bold text-white mb-2">{t('hero.feature3.title')}</h3>
+              <p className="text-gray-300">{t('hero.feature3.desc')}</p>
             </div>
           </div>
 

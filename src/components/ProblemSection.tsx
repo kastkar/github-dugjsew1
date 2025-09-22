@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Wifi, BookOpen, Smartphone, Languages, WifiOff, Gamepad2 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const ProblemSection = () => {
+  const { t } = useLanguage();
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
 
   useEffect(() => {
@@ -26,29 +28,29 @@ const ProblemSection = () => {
   const problems = [
     {
       icon: <WifiOff className="w-16 h-16" />,
-      title: "Hate Bad Internet?",
-      description: "Our game is 100% OFFLINE. No lag, no loading, ever.",
+      title: t('problems.problem1.title'),
+      description: t('problems.problem1.desc'),
       color: "from-red-500 to-orange-500",
       delay: 0
     },
     {
       icon: <Languages className="w-16 h-16" />,
-      title: "Complex Concepts?",
-      description: "We break down difficult topics into simple, digestible lessons.",
+      title: t('problems.problem2.title'),
+      description: t('problems.problem2.desc'),
       color: "from-blue-500 to-purple-500",
       delay: 200
     },
     {
       icon: <Gamepad2 className="w-16 h-16" />,
-      title: "Need More Engagement?",
-      description: "Our platform is more engaging with interactive quests and challenges.",
+      title: t('problems.problem3.title'),
+      description: t('problems.problem3.desc'),
       color: "from-green-500 to-teal-500",
       delay: 400
     },
     {
       icon: <Smartphone className="w-16 h-16" />,
-      title: "Slow Phone?",
-      description: "This game is super-light and runs on ANY device, fast.",
+      title: t('problems.problem4.title'),
+      description: t('problems.problem4.desc'),
       color: "from-yellow-500 to-red-500",
       delay: 600
     }
@@ -59,10 +61,10 @@ const ProblemSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
-            Studying STEM becomes so exciting with our platform!
+            {t('problems.title')}
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We've created engaging solutions to make learning more effective and fun!
+            {t('problems.subtitle')}
           </p>
         </div>
 
@@ -104,7 +106,7 @@ const ProblemSection = () => {
         <div className="text-center mt-16">
           <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full text-white font-semibold animate-pulse">
             <Gamepad2 className="w-5 h-5 mr-2" />
-            Ready to turn learning into an adventure?
+          {t('problems.cta')}
           </div>
         </div>
       </div>

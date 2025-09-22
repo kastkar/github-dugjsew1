@@ -1,7 +1,10 @@
 import React from 'react';
 import { Github, Mail, MapPin } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
+  
   return (
     <footer className="bg-gray-900 py-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4">
@@ -9,33 +12,32 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <h3 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500 mb-4">
-              SPARKSTEM
+              {t('hero.title')}
             </h3>
             <p className="text-gray-400 leading-relaxed max-w-md">
-              Transforming rural education in Odisha through gamified STEM learning. 
-              Making quality education accessible, engaging, and culturally relevant.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-yellow-400 transition-colors">Student Portal</a></li>
-              <li><a href="#" className="hover:text-yellow-400 transition-colors">Teacher Dashboard</a></li>
-              <li><a href="#" className="hover:text-yellow-400 transition-colors">Game Worlds</a></li>
-              <li><a href="#" className="hover:text-yellow-400 transition-colors">Offline Downloads</a></li>
+              <li><a href="#" className="hover:text-yellow-400 transition-colors">{t('footer.studentPortal')}</a></li>
+              <li><a href="#" className="hover:text-yellow-400 transition-colors">{t('footer.teacherDashboard')}</a></li>
+              <li><a href="#" className="hover:text-yellow-400 transition-colors">{t('footer.gameWorlds')}</a></li>
+              <li><a href="#" className="hover:text-yellow-400 transition-colors">{t('footer.offlineDownloads')}</a></li>
             </ul>
           </div>
 
           {/* Support */}
           <div>
-            <h4 className="text-white font-semibold mb-4">Support</h4>
+            <h4 className="text-white font-semibold mb-4">{t('footer.support')}</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-yellow-400 transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-yellow-400 transition-colors">Technical Issues</a></li>
-              <li><a href="#" className="hover:text-yellow-400 transition-colors">Content Guidelines</a></li>
-              <li><a href="#" className="hover:text-yellow-400 transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="hover:text-yellow-400 transition-colors">{t('footer.helpCenter')}</a></li>
+              <li><a href="#" className="hover:text-yellow-400 transition-colors">{t('footer.technicalIssues')}</a></li>
+              <li><a href="#" className="hover:text-yellow-400 transition-colors">{t('footer.contentGuidelines')}</a></li>
+              <li><a href="#" className="hover:text-yellow-400 transition-colors">{t('footer.privacyPolicy')}</a></li>
             </ul>
           </div>
         </div>
@@ -43,9 +45,9 @@ const Footer = () => {
         {/* Team Info */}
         <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-2xl p-6 mb-8">
           <div className="text-center">
-            <h3 className="text-xl font-bold text-white mb-2">Built by Team Kastkar</h3>
+            <h3 className="text-xl font-bold text-white mb-2">{t('footer.builtBy')}</h3>
             <p className="text-gray-400 mb-4">
-              A passionate team of developers, designers, and educators working to revolutionize rural education in India.
+              {t('footer.teamDesc')}
             </p>
             <div className="flex items-center justify-center gap-6 text-sm text-gray-400">
               <div className="flex items-center gap-2">
@@ -79,10 +81,10 @@ const Footer = () => {
           
           <div className="text-center md:text-right">
             <p className="text-gray-400 text-sm">
-              © 2025 SparkSTEM. Made with ❤️ by Team Kastkar for rural India.
+              {t('footer.copyright')}
             </p>
             <p className="text-gray-500 text-xs mt-1">
-              Empowering minds, preserving culture, building futures.
+              {t('footer.tagline')}
             </p>
           </div>
         </div>
@@ -91,9 +93,9 @@ const Footer = () => {
         <div className="mt-8 text-center">
           <div className="inline-flex items-center gap-2 text-yellow-400 text-lg">
             <span>🎯</span>
-            <span className="font-semibold">Mission: Digital Inclusion</span>
+            <span className="font-semibold">{t('footer.mission')}</span>
             <span>🌟</span>
-            <span className="font-semibold">Vision: Educated Odisha</span>
+            <span className="font-semibold">{t('footer.vision')}</span>
             <span>🚀</span>
           </div>
         </div>

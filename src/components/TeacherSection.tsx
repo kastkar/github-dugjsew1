@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import { Users, Brain, Trophy, BarChart3, Bell, CheckSquare, Target, Zap } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const TeacherSection = () => {
+  const { t } = useLanguage();
   const [activeFeature, setActiveFeature] = useState(0);
 
   const teacherFeatures = [
     {
       icon: <BarChart3 className="w-6 h-6" />,
-      title: "See exactly where students are stuck, in real-time",
-      description: "Live analytics dashboard shows student progress and identifies learning gaps instantly"
+      title: t('teacher.feature1'),
+      description: t('teacher.feature1.desc')
     },
     {
       icon: <Bell className="w-6 h-6" />,
-      title: "Get AI-alerts when a student needs help",
-      description: "Smart notifications ping you when students struggle, so no one gets left behind"
+      title: t('teacher.feature2'),
+      description: t('teacher.feature2.desc')
     },
     {
       icon: <CheckSquare className="w-6 h-6" />,
-      title: "Stop grading homework! Our AI auto-grades quizzes",
-      description: "Intelligent assessment system grades automatically and provides detailed feedback"
+      title: t('teacher.feature3'),
+      description: t('teacher.feature3.desc')
     },
     {
       icon: <Target className="w-6 h-6" />,
-      title: "Deploy custom challenges and assignments to the whole class",
-      description: "Create personalized quests and challenges tailored to your curriculum"
+      title: t('teacher.feature4'),
+      description: t('teacher.feature4.desc')
     }
   ];
 
@@ -50,11 +52,11 @@ const TeacherSection = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-black text-white mb-4">
-            A <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Superpower</span> for Teachers
+            {t('teacher.title')}
           </h2>
-          <h3 className="text-2xl text-gray-300 mb-4">The Teacher's Lounge</h3>
+          <h3 className="text-2xl text-gray-300 mb-4">{t('teacher.subtitle')}</h3>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Transform your classroom with AI-powered insights and gamified learning management
+            {t('teacher.description')}
           </p>
         </div>
 
@@ -63,7 +65,7 @@ const TeacherSection = () => {
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-white mb-8 flex items-center gap-3">
               <Zap className="w-8 h-8 text-yellow-400" />
-              Teacher Power-Ups
+              {t('teacher.powerUps')}
             </h3>
             
             {teacherFeatures.map((feature, index) => (
@@ -100,10 +102,10 @@ const TeacherSection = () => {
             <div className="mt-8 p-6 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl border border-green-400/30">
               <h4 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
                 <Trophy className="w-5 h-5 text-yellow-400" />
-                Best Part: Zero Learning Curve!
+                {t('teacher.bestPart')}
               </h4>
               <p className="text-gray-300 text-sm">
-                Our interface is so intuitive, you'll be a pro in 5 minutes. Promise!
+                {t('teacher.bestPartDesc')}
               </p>
             </div>
           </div>
@@ -112,10 +114,10 @@ const TeacherSection = () => {
           <div className="relative">
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-6 border border-gray-700">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-2xl font-bold text-white">Class Dashboard</h3>
+                <h3 className="text-2xl font-bold text-white">{t('teacher.dashboard')}</h3>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 text-sm">Live</span>
+                  <span className="text-green-400 text-sm">{t('teacher.live')}</span>
                 </div>
               </div>
 
@@ -155,15 +157,15 @@ const TeacherSection = () => {
               <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-gray-600">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-green-400">28</div>
-                  <div className="text-gray-400 text-xs">Active Students</div>
+                  <div className="text-gray-400 text-xs">{t('teacher.activeStudents')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-yellow-400">15</div>
-                  <div className="text-gray-400 text-xs">Avg Level</div>
+                  <div className="text-gray-400 text-xs">{t('teacher.avgLevel')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-400">73%</div>
-                  <div className="text-gray-400 text-xs">Class Progress</div>
+                  <div className="text-gray-400 text-xs">{t('teacher.classProgress')}</div>
                 </div>
               </div>
             </div>
@@ -172,7 +174,7 @@ const TeacherSection = () => {
             <div className="absolute -right-4 top-20 bg-red-500 text-white p-3 rounded-lg shadow-lg animate-bounce">
               <div className="flex items-center gap-2 text-sm">
                 <Bell className="w-4 h-4" />
-                Sneha needs help with Chemistry!
+                Sneha {t('teacher.needsHelp')}
               </div>
             </div>
           </div>

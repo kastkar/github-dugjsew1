@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import LanguageToggle from './components/LanguageToggle';
 import Hero from './components/Hero';
 import ProblemSection from './components/ProblemSection';
 import GameWorlds from './components/GameWorlds';
@@ -46,6 +47,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black">
+      <LanguageToggle />
+      
       {/* Main Website */}
       {!activeDashboard && !activeGame && (
         <>
